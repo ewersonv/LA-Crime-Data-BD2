@@ -1,5 +1,5 @@
 # LA-Crime-Data-BD2
-Repository for activities related to the work of the discipline "Banco de Dados 2". <br>
+Repository for activities related to the project of the discipline "Banco de Dados 2". <br>
 
 ### Group Members:
 Ewerson Vieira Nascimento (ewersonv@gmail.com) <br>
@@ -35,13 +35,13 @@ Dimension *Location*
 
 Dimension *Time*
 - <b>id</b>: identifier provided by technical key on Pentaho.
-- <b>time</b>: string containing the hour and minutes the crime was reported (0700, 2200, 2045, etc.).
+- <b>time</b>: string containing the hour and minute the crime was reported (0700, 2200, 2045, etc.).
 
 Dimension *Victim*
 - <b>id</b>: identifier provided by technical key on Pentaho.
 - <b>victim_age</b>: age of the victim of the crime.
-- <b>victim_sex</b>: sex of the victime of the crime (M/F).
-- <b>victim_descent</b>: ethnicity of the victim.
+- <b>victim_sex</b>: sex of the victim of the crime (M/F).
+- <b>victim_descent</b>: ethnicity of the victim of the crime.
 
 Dimension *Weapon*
 - <b>id</b>: identifier provided by technical key on Pentaho.
