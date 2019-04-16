@@ -24,7 +24,7 @@ You must specify the path of the file you want to open in the <b>Filename</b> fi
 
 As said before, you'll have to do this step twice: one for the *Date Reported* field and another for the *Date Occurred* field.
 
-Remove all the fields we won't use so that your step looks just like the image above and then hit <b>OK</b>.
+Remove all the fields you won't use so that your step looks just like the image above and then hit <b>OK</b>.
 
 #### 2. Spliting the data
 
@@ -34,7 +34,7 @@ The reason you have to do this step is because in the .csv we're using, the fiel
 2013-09-20T00:00:00
 ```
 
-The values after T doesn't change throughout the data in this .csv, so we did a split in this field to get only the useful information, which is the date itself.
+The values after T don't change throughout the data in this .csv, so we did a split in this field to get only the useful information, which is the date itself.
 
 With that in mind, you must set the <b>Field to split</b> according to the previous field you used on the input file. Set the <b>Delimiter</b> as T and then create a <b>New Field</b> using the name of your choice (here we used *date*). <b>IMPORTANT</b>: The name of the new field must be the same on both <b>Split fields</b> step.
 
@@ -76,7 +76,7 @@ Hit <b>OK</b> and run the transformation.
 
 The steps you'll follow to create the other dimensions are very similar to the ones you saw above. The differences are:
 - The dimension *Location* needs a sequence of three <b>Split fields</b> so you can get the *Latitude* and the *Longitude* correctly. This is how the field containing both comes from the .csv: ```"{'longitude': '-118.2574', 'human_address': '{""address"":"""",""city"":"""",""state"":"""",""zip"":""""}', 'needs_recoding': False, 'latitude': '34.0277'}"```
-- The other dimensions doesn't need a <b>Split fields</b> step. The transformation will be very similar. Instead of passing the values through a <b>Split fields</b> step, we simply put the main output of the <b>CSV input file</b> as the <b>Sort rows</b> step.
+- The other dimensions don't need a <b>Split fields</b> step. The transformation will be very similar. Instead of passing the values through a <b>Split fields</b> step, we simply put the main output of the <b>CSV input file</b> as the <b>Sort rows</b> step.
 
 Here is a image showing how our *Location* transformation look:
 ![dim_location](img/dim_location.png)
