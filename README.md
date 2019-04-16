@@ -1,20 +1,20 @@
 # LA-Crime-Data-BD2
 Repositório para atividades referentes ao trabalho da disciplina de Banco de Dados 2. <br>
 
-#### Integrantes do grupo:
+### Integrantes do grupo:
 Ewerson Vieira Nascimento (ewersonv@gmail.com) <br>
 Willian Vaneli (willianvaneli@gmail.com) <br>
 
-#### Database
+### Database
 [Kaggle](https://www.kaggle.com/cityofLA/los-angeles-crime-arrest-data) <br>
 
-#### Drive
+### Drive
 [Folder](https://drive.google.com/drive/folders/1Ew5wzFAtJyR45iBYXEVI1P-biqJlzNMn)
 
-#### Conceptual Model
+### Conceptual Model
 ![Conceitual](modelo-conceitual/Conceitual.png)
 
-#### Data dictionary
+### Data dictionary
 Dimension *Crime*
 - <b>id</b>: identifier provided by technical key on Pentaho.
 - <b>crime_code</b>: indicates the crime committed according to the LA crime code system.
@@ -52,5 +52,5 @@ Facto *Occurrence*
 - <b>id</b>: identifier provided by technical key on Pentaho.
 - <b>dr_number</b>: Division of Records Number. Official file number made up of a 2 digit year, area ID, and 5 digits.
 
-#### Pentaho
+### Pentaho
 [Step by step](steps-pentaho/README.md)

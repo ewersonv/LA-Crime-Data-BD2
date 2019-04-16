@@ -1,8 +1,8 @@
 # Step by step Pentaho
 
-In this tutorial you will be shown how we made our transformations on Pentaho to create our dimensional tables and our fact table. We'll approach only the dimensions *Date* and *Location* so that this tutorial doesn't get too long.
+In this tutorial you will be shown how we made our transformations on Pentaho to create our dimensional tables and our fact table. We'll approach only the dimension *Date* so that this tutorial doesn't get too long.
 
-### Dimension Date
+## Dimension Date
 To create the dimension Date you'll need to use the following steps:
 - CSV file input
 - Split fields
@@ -20,7 +20,7 @@ The first thing we need to do is open our .csv in the <b>CSV file input</b> step
 
 ![date-csv-input](img/date-csv-input.png)
 
-You must specify the path of the file you want to open in the <b>Filename</b> field. Let the <b>Delimiter</b> be a ```,``` so you can get the fields properly by clicking on <b>Get fields</b>. You can also change the step name so it's easier to know which field you're dealing with.
+You must specify the path of the file you want to open in the <b>Filename</b> field. Let the <b>Delimiter</b> be a ```,``` so you can get the fields properly by clicking on <b>Get fields</b>, and uncheck the <b>Lazy conversion?</b> box. You can also change the step name so it's easier to know which field you're dealing with.
 
 As said before, you'll have to do this step twice: one for the *Date Reported* field and another for the *Date Occurred* field.
 
@@ -72,7 +72,7 @@ After that, mark the <b>Update the dimension?</b> box and set the table where th
 
 Hit <b>OK</b> and run the transformation.
 
-### Other Dimensions
+## Other Dimensions
 
 The steps you'll follow to create the other dimensions are very similar to the ones you saw above. The differences are:
 - The dimension *Location* needs a sequence of three <b>Split fields</b> so you can get the *Latitude* and the *Longitude* correctly. This is how the field containing both comes from the .csv: ```"{'longitude': '-118.2574', 'human_address': '{""address"":"""",""city"":"""",""state"":"""",""zip"":""""}', 'needs_recoding': False, 'latitude': '34.0277'}"```
@@ -83,4 +83,4 @@ Here is a image showing how our *Location* transformation look:
 
 All the transformations we made on this project can be found on the folder [transformations](transformations/).
 
-### Fact Occurrence
+## Fact Occurrence
