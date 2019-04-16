@@ -1,6 +1,6 @@
 # Step by step Pentaho
 
-In this tutorial you will be shown how we made our transformations on Pentaho to create our dimensional tables and our fact table. We'll approach only the dimension *Date* so that this tutorial doesn't get too long.
+In this tutorial you'll see how we made our transformations on Pentaho to create our dimensional tables and our fact table. We'll approach only the dimension *Date* so that this tutorial doesn't get too long.
 
 ## Dimension Date
 To create the dimension Date you'll need to use the following steps:
