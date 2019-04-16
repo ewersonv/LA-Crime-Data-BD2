@@ -1,7 +1,7 @@
 # LA-Crime-Data-BD2
-Repositório para atividades referentes ao trabalho da disciplina de Banco de Dados 2. <br>
+Repository for activities related to the work of the discipline "Banco de Dados 2". <br>
 
-### Integrantes do grupo:
+### Group Members:
 Ewerson Vieira Nascimento (ewersonv@gmail.com) <br>
 Willian Vaneli (willianvaneli@gmail.com) <br>
 
