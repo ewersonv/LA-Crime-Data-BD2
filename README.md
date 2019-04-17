@@ -48,7 +48,7 @@ Dimension *Weapon*
 - <b>weapon_code</b>: code of the weapon used on the crime.
 - <b>weapon_description</b>: description of the weapon used on the crime.
 
-Facto *Occurrence*
+Fact *Occurrence*
 - <b>id</b>: identifier provided by technical key on Pentaho.
 - <b>dr_number</b>: Division of Records Number. Official file number made up of a 2 digit year, area ID, and 5 digits.
 
