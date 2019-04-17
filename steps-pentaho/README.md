@@ -84,3 +84,43 @@ Here is a image showing how our *Location* transformation look:
 All the transformations we made on this project can be found on the folder [transformations](transformations/).
 
 ## Fact Occurrence
+
+For the fact *Occurrence* you must read the .csv and make the same steps to filter the *Date Reported*, *Date Ocurred*, *Longitude* and *Latitude* fields you made before on the dimensions, i.e., you have to split the data coming from the .csv just like you did before. You can copy the previous <b>Split fields</b> steps and paste them in the fact transformation that it'll work just fine.
+
+To make the fact *Occurrence* you'll use:
+- Split fields (as mentioned before)
+- Dimension lookup/update
+- Table output
+
+Here's how your fact transformation shall look when you're done:
+
+![occurrence](img/occurrence.png)
+
+#### 1. Getting the IDs of the dimensions
+On the table fact you'll have only the IDs of the other dimensions and some metrics you think are important to your project. In our case, our fact has only the IDs of the dimensions, our metrics will be generated on our reports.
+
+To get the IDs you'll concatenate the <b>Dimension lookup/update</b> steps before throwing the data to the table in your <b>Table output</b> step. There'll be one <b>Dimension lookup/update</b> step for each dimensional table, except for *Date*, that you'll use 2 steps in order to have both *Date Reported* and *Date Occurred* in the fact table.
+
+This is how the step for *Date Occurred* will look:
+
+![fact-date-occurred](img/fact-date-occurred.png)
+
+You must repeat the step above to the *Date Reported* field, changing only the <b>Field in stream</b>.
+
+For the other dimensional tables you'll put all the incoming data of each table in their respective step. It is indispensable that you specify each table <b>Technical key field</b> for the succcess of the transformation. You can check how these steps were made in our [img](img/) folder or in the tranformation file [facto.ktr](transformations/facto.ktr).
+
+#### Creating the fact table
+
+To create the fact *Occurrence* you must set the previous steps main output as the <b>Table output</b> step.
+
+Open the <b>Table output</b>. Click on <b>Database fields</b> and then on <b>Get fields</b>. Delete all the fields leaving only the IDs you've got as technical keys on the previous steps and the <b>DR Number</b> field. Pay attention because you'll have two *id_dim_date* on the <b>Stream field</b>: *id_dim_date* and *id_dim_date_1*. The first one has the IDs of *Date Reported* and the other has the IDs that are relative to the *Date Occurred* field. Also remember to rename the fields so they won't contain spaces or illegal characters.
+
+This is how our <b>Table output</b> step looks:
+
+![fact-table-output](img/fact-table-output.png)
+
+After you've done with the steps specified above, hit <b>OK</b> and run the transformation.
+
+On your DBMS you shall see something like this:
+
+![facto-select](img/fact-select.png)
