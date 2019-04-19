@@ -107,13 +107,13 @@ This is how the step for *Date Occurred* will look:
 
 You must repeat the step above to the *Date Reported* field, changing only the <b>Field in stream</b>.
 
-For the other dimensional tables you'll put all the incoming data of each table in their respective step. It is indispensable that you specify each table <b>Technical key field</b> for the succcess of the transformation. You can check how these steps were made in our [img](img/) folder or in the tranformation file [facto.ktr](transformations/facto.ktr).
+For the other dimensional tables you'll put all the incoming data of each table in their respective step. It is indispensable that you specify each table <b>Technical key field</b> for the succcess of the transformation. You can check how these steps were made in our [img](img/) folder or in the tranformation file [facto.ktr](transformations/fact.ktr).
 
 #### Creating the fact table
 
 To create the fact *Occurrence* you must set the previous steps main output as the <b>Table output</b> step.
 
-Open the <b>Table output</b>. Click on <b>Database fields</b> and then on <b>Get fields</b>. Delete all the fields leaving only the IDs you've got as technical keys on the previous steps and the <b>DR Number</b> field. Pay attention because you'll have two *id_dim_date* on the <b>Stream field</b>: *id_dim_date* and *id_dim_date_1*. The first one has the IDs of *Date Reported* and the other has the IDs that are relative to the *Date Occurred* field. Also remember to rename the fields so they won't contain spaces or illegal characters.
+Open the <b>Table output</b>. Click on <b>Database fields</b> and then on <b>Get fields</b>. Delete all the fields leaving only the IDs you've got as technical keys on the previous steps and the <b>DR Number</b> field. Pay attention because you'll have two *id_dim_date* on the column <b>Stream field</b>: *id_dim_date* and *id_dim_date_1*. The first one has the IDs of *Date Reported* and the other has the IDs that are relative to the *Date Occurred* field. Also remember to rename the fields so they won't contain spaces or illegal characters.
 
 This is how our <b>Table output</b> step looks:
 
