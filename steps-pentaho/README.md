@@ -107,7 +107,7 @@ This is how the step for *Date Occurred* will look:
 
 You must repeat the step above to the *Date Reported* field, changing only the <b>Field in stream</b>.
 
-For the other dimensional tables you'll put all the incoming data of each table in their respective step. It is indispensable that you specify each table <b>Technical key field</b> for the succcess of the transformation. You can check how these steps were made in our [img](img/) folder or in the tranformation file [facto.ktr](transformations/fact.ktr).
+For the other dimensional tables you'll put all the incoming data of each table in their respective step. It is indispensable that you specify each table <b>Technical key field</b> for the succcess of the transformation. You can check how these steps were made in our [img](img/) folder or in the tranformation file [fact.ktr](transformations/fact.ktr).
 
 #### Creating the fact table
 
