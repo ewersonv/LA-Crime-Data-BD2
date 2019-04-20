@@ -30,7 +30,7 @@ Remove all the fields you won't use so that your step looks just like the image 
 
 The reason you have to do this step is because in the .csv we're using, the fields that have a date format (*Date Reported* and *Date Occurred*) comes this way:
 
-```bash
+```
 2013-09-20T00:00:00
 ```
 
