@@ -12,7 +12,10 @@ Willian Vaneli (willianvaneli@gmail.com) <br>
 [Folder](https://drive.google.com/drive/folders/1Ew5wzFAtJyR45iBYXEVI1P-biqJlzNMn)
 
 ### Conceptual Model
-![Conceitual](modelo-conceitual/Conceitual.png)
+![Conceitual](database-models/Conceptual.png)
+
+### Logic Model
+![Logic](database-models/Logic.png)
 
 ### Data dictionary
 Dimension *Crime*
