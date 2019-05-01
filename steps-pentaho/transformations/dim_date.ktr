@@ -6,6 +6,7 @@
     <extended_description />
     <trans_version />
     <trans_type>Normal</trans_type>
+    <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
     </parameters>
@@ -427,9 +428,9 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2019/04/15 19:09:01.633</created_date>
+    <created_date>2019/05/01 11:46:21.709</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2019/04/15 19:09:01.633</modified_date>
+    <modified_date>2019/05/01 11:46:21.709</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -488,38 +489,214 @@
   </connection>
   <order>
     <hop>
-      <from>Sort rows Date</from>
-      <to>Unique rows Date</to>
+      <from>Generate rows - data</from>
+      <to>Add sequence - incrementando</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Split fields Date Occurred</from>
-      <to>Sort rows Date</to>
+      <from>Add sequence - incrementando</from>
+      <to>Calculator</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Split fields Date Reported</from>
-      <to>Sort rows Date</to>
+      <from>Calculator</from>
+      <to>Select values - ConversaoToString</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Unique rows Date</from>
-      <to>Dimension lookup/update Date</to>
+      <from>Select values - ConversaoToString</from>
+      <to>Select values</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>input Date Occurred</from>
-      <to>Split fields Date Occurred</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>input Date Reported</from>
-      <to>Split fields Date Reported</to>
+      <from>Select values</from>
+      <to>Dimension lookup/update</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>Dimension lookup/update Date</name>
+    <name>Add sequence - incrementando</name>
+    <type>Sequence</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <valuename>increment_date</valuename>
+    <use_database>N</use_database>
+    <connection>bd2</connection>
+    <schema />
+    <seqname>SEQ_</seqname>
+    <use_counter>Y</use_counter>
+    <counter_name />
+    <start_at>0</start_at>
+    <increment_by>1</increment_by>
+    <max_value>999999999</max_value>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>448</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Calculator</name>
+    <type>Calculator</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <failIfNoFile>Y</failIfNoFile>
+    <calculation>
+      <field_name>seq_date</field_name>
+      <calc_type>ADD_DAYS</calc_type>
+      <field_a>stardeDate</field_a>
+      <field_b>increment_date</field_b>
+      <field_c />
+      <value_type>Date</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask>dd-MM-yyyy</conversion_mask>
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <calculation>
+      <field_name>id_date</field_name>
+      <calc_type>COPY_FIELD</calc_type>
+      <field_a>seq_date</field_a>
+      <field_b />
+      <field_c />
+      <value_type>Date</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask>ddMMyyyy</conversion_mask>
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <calculation>
+      <field_name>day</field_name>
+      <calc_type>DAY_OF_MONTH</calc_type>
+      <field_a>seq_date</field_a>
+      <field_b />
+      <field_c />
+      <value_type>None</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <calculation>
+      <field_name>weekday</field_name>
+      <calc_type>DAY_OF_WEEK</calc_type>
+      <field_a>seq_date</field_a>
+      <field_b />
+      <field_c />
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <calculation>
+      <field_name>name_weekday</field_name>
+      <calc_type>COPY_FIELD</calc_type>
+      <field_a>seq_date</field_a>
+      <field_b />
+      <field_c />
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask>EEEE</conversion_mask>
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <calculation>
+      <field_name>month</field_name>
+      <calc_type>MONTH_OF_DATE</calc_type>
+      <field_a>seq_date</field_a>
+      <field_b />
+      <field_c />
+      <value_type>Integer</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <calculation>
+      <field_name>name_month</field_name>
+      <calc_type>COPY_FIELD</calc_type>
+      <field_a>seq_date</field_a>
+      <field_b />
+      <field_c />
+      <value_type>String</value_type>
+      <value_length>24</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask>MMMM</conversion_mask>
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <calculation>
+      <field_name>year</field_name>
+      <calc_type>YEAR_OF_DATE</calc_type>
+      <field_a>seq_date</field_a>
+      <field_b />
+      <field_c />
+      <value_type>Integer</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>608</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Dimension lookup/update</name>
     <type>DimensionLookup</type>
     <description />
     <distribute>Y</distribute>
@@ -536,8 +713,32 @@
     <update>Y</update>
     <fields>
       <key>
-        <name>date</name>
-        <lookup>date</lookup>
+        <name>seq_date</name>
+        <lookup>seq_date</lookup>
+      </key>
+      <key>
+        <name>day</name>
+        <lookup>day</lookup>
+      </key>
+      <key>
+        <name>weekday</name>
+        <lookup>weekday</lookup>
+      </key>
+      <key>
+        <name>name_weekday</name>
+        <lookup>name_weekday</lookup>
+      </key>
+      <key>
+        <name>month</name>
+        <lookup>month</lookup>
+      </key>
+      <key>
+        <name>name_month</name>
+        <lookup>name_month</lookup>
+      </key>
+      <key>
+        <name>year</name>
+        <lookup>year</lookup>
       </key>
       <date>
         <name />
@@ -570,14 +771,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>896</xloc>
-      <yloc>176</yloc>
+      <xloc>256</xloc>
+      <yloc>288</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Sort rows Date</name>
-    <type>SortRows</type>
+    <name>Generate rows - data</name>
+    <type>RowGenerator</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -586,68 +787,25 @@
       <method>none</method>
       <schema_name />
     </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory />
-    <compress>N</compress>
-    <compress_variable />
-    <unique_rows>N</unique_rows>
     <fields>
       <field>
-        <name>date</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>560</xloc>
-      <yloc>176</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Split fields Date Occurred</name>
-    <type>FieldSplitter</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <splitfield>Date Occurred</splitfield>
-    <delimiter>T</delimiter>
-    <enclosure />
-    <fields>
-      <field>
-        <name>date</name>
-        <id />
-        <idrem>N</idrem>
+        <name>stardeDate</name>
         <type>Date</type>
         <format>yyyy-MM-dd</format>
-        <group />
-        <decimal />
         <currency />
+        <decimal />
+        <group />
+        <nullif>2010-01-01</nullif>
         <length>-1</length>
         <precision>-1</precision>
-        <nullif />
-        <ifnull />
-        <trimtype>none</trimtype>
+        <set_empty_string>N</set_empty_string>
       </field>
     </fields>
+    <limit>3650</limit>
+    <never_ending>N</never_ending>
+    <interval_in_ms>5000</interval_in_ms>
+    <row_time_field>now</row_time_field>
+    <last_time_field>FiveSecondsAgo</last_time_field>
     <attributes />
     <cluster_schema />
     <remotesteps>
@@ -657,14 +815,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>400</xloc>
-      <yloc>224</yloc>
+      <xloc>256</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Split fields Date Reported</name>
-    <type>FieldSplitter</type>
+    <name>Select values</name>
+    <type>SelectValues</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -673,25 +831,42 @@
       <method>none</method>
       <schema_name />
     </partitioning>
-    <splitfield>Date Reported</splitfield>
-    <delimiter>T</delimiter>
-    <enclosure />
     <fields>
-      <field>
-        <name>date</name>
-        <id />
-        <idrem>N</idrem>
+      <select_unspecified>N</select_unspecified>
+      <meta>
+        <name>id_date</name>
+        <rename>id_date</rename>
+        <type>Integer</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask>#</conversion_mask>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+      <meta>
+        <name>seq_date</name>
+        <rename>seq_date</rename>
         <type>Date</type>
-        <format>yyyy-MM-dd</format>
-        <group />
-        <decimal />
-        <currency />
-        <length>-1</length>
-        <precision>-1</precision>
-        <nullif />
-        <ifnull />
-        <trimtype>none</trimtype>
-      </field>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask>dd-MM-yyyy</conversion_mask>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
     </fields>
     <attributes />
     <cluster_schema />
@@ -702,14 +877,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>400</xloc>
-      <yloc>144</yloc>
+      <xloc>416</xloc>
+      <yloc>288</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Unique rows Date</name>
-    <type>Unique</type>
+    <name>Select values - ConversaoToString</name>
+    <type>SelectValues</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -718,66 +893,42 @@
       <method>none</method>
       <schema_name />
     </partitioning>
-    <count_rows>N</count_rows>
-    <count_field />
-    <reject_duplicate_row>N</reject_duplicate_row>
-    <error_description />
     <fields>
-      <field>
-        <name>date</name>
-        <case_insensitive>N</case_insensitive>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>704</xloc>
-      <yloc>176</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>input Date Occurred</name>
-    <type>CsvInput</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <filename>/home/ewerson/Downloads/BD2/los-angeles-crime-arrest-data/crime-data-from-2010-to-present.csv</filename>
-    <filename_field />
-    <rownum_field />
-    <include_filename>N</include_filename>
-    <separator>,</separator>
-    <enclosure>"</enclosure>
-    <header>Y</header>
-    <buffer_size>50000</buffer_size>
-    <lazy_conversion>N</lazy_conversion>
-    <add_filename_result>N</add_filename_result>
-    <parallel>N</parallel>
-    <newline_possible>N</newline_possible>
-    <encoding />
-    <fields>
-      <field>
-        <name>Date Occurred</name>
+      <select_unspecified>N</select_unspecified>
+      <meta>
+        <name>id_date</name>
+        <rename>id_date</rename>
         <type>String</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>10</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask>ddMMyyyy</conversion_mask>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+      <meta>
+        <name>seq_date</name>
+        <rename>seq_date</rename>
+        <type>Date</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask />
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
     </fields>
     <attributes />
     <cluster_schema />
@@ -788,59 +939,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>192</xloc>
-      <yloc>224</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>input Date Reported</name>
-    <type>CsvInput</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <filename>/home/ewerson/Downloads/BD2/los-angeles-crime-arrest-data/crime-data-from-2010-to-present.csv</filename>
-    <filename_field />
-    <rownum_field />
-    <include_filename>N</include_filename>
-    <separator>,</separator>
-    <enclosure>"</enclosure>
-    <header>Y</header>
-    <buffer_size>50000</buffer_size>
-    <lazy_conversion>N</lazy_conversion>
-    <add_filename_result>N</add_filename_result>
-    <parallel>N</parallel>
-    <newline_possible>N</newline_possible>
-    <encoding />
-    <fields>
-      <field>
-        <name>Date Reported</name>
-        <type>String</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>10</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>192</xloc>
-      <yloc>144</yloc>
+      <xloc>608</xloc>
+      <yloc>288</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

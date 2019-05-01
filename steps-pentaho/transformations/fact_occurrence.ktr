@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>facto</name>
+    <name>fact_occurrence</name>
     <description />
     <extended_description />
     <trans_version />
     <trans_type>Normal</trans_type>
+    <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
     </parameters>
@@ -1120,7 +1121,7 @@
     <fields>
       <key>
         <name>date_occurred</name>
-        <lookup>date</lookup>
+        <lookup>seq_date</lookup>
       </key>
       <date>
         <name />
@@ -1177,7 +1178,7 @@
     <fields>
       <key>
         <name>date_reported</name>
-        <lookup>date</lookup>
+        <lookup>seq_date</lookup>
       </key>
       <date>
         <name />
@@ -1483,7 +1484,7 @@
     </partitioning>
     <connection>bd2</connection>
     <schema />
-    <table>fato_occurrence</table>
+    <table>fact_occurrence</table>
     <commit>1000</commit>
     <truncate>N</truncate>
     <ignore_errors>N</ignore_errors>
@@ -1505,11 +1506,11 @@
       </field>
       <field>
         <column_name>id_date_reported</column_name>
-        <stream_name>id_dim_date</stream_name>
+        <stream_name>id_dim_date_1</stream_name>
       </field>
       <field>
         <column_name>id_date_occurred</column_name>
-        <stream_name>id_dim_date_1</stream_name>
+        <stream_name>id_dim_date</stream_name>
       </field>
       <field>
         <column_name>id_dim_crime</column_name>
