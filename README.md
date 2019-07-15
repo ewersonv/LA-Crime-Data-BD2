@@ -5,6 +5,10 @@ Repository for activities related to the project of the discipline "Banco de Dad
 Ewerson Vieira Nascimento (ewersonv@gmail.com) <br>
 Willian Vaneli (willianvaneli@gmail.com) <br>
 
+## Presentations
+[Main](main.pptx) <br>
+[Data Mining](data-mining.pptx)
+
 ### Database
 [Kaggle](https://www.kaggle.com/cityofLA/los-angeles-crime-arrest-data) <br>
 
